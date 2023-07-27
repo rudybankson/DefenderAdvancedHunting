@@ -1,0 +1,5 @@
+DeviceProcessEvents 
+| join DeviceInfo on DeviceName 
+| where FileName contains "java.exe" or FileName  contains "javaw.exe"
+| where OSPlatform !contains "server" 
+| summarize count() by DeviceName, OSPlatform, InitiatingProcessFolderPath, InitiatingProcessFileName, InitiatingProcessCommandLine, FolderPath, FileName
