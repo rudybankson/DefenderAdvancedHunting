@@ -1,0 +1,5 @@
+DeviceProcessEvents 
+| join DeviceInfo on DeviceName 
+| where FolderPath contains "C:\\Program Files\\Java\\" or FolderPath contains "C:\\Program Files (x86)\\Java\\"
+| where OSPlatform !contains "server" 
+| summarize count() by DeviceName, OSPlatform, InitiatingProcessFolderPath, InitiatingProcessFileName, InitiatingProcessCommandLine, FolderPath, FileName
